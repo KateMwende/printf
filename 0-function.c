@@ -12,7 +12,7 @@ int printf_char(va_list list)
 
 	putchar(arg);
 
-	return (0);
+	return (1);
 }
 /**
  * printf_str - funtion that print str.
@@ -45,5 +45,5 @@ int printf_porc(va_list list)
 	(void)list;
 	putchar('%');
 
-	return (0);
+	return (1);
 }
