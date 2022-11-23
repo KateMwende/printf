@@ -10,9 +10,9 @@ int printf_char(va_list list)
 {
 	int arg = va_arg(list, int);
 
-	putchar(arg);
+	_putchar(arg);
 
-	return (0);
+	return (1);
 }
 /**
  * printf_str - funtion that print str.
@@ -27,10 +27,10 @@ int printf_str(va_list list)
 
 	if (ptr == NULL)
 		for (i = 0; ptrNULL[i] != '\0'; i++)
-			putchar(ptrNULL[i]);
+			_putchar(ptrNULL[i]);
 	else
 		for (i = 0; ptr[i] != '\0'; i++)
-			putchar(ptr[i]);
+			_putchar(ptr[i]);
 
 	return (i);
 
@@ -43,7 +43,7 @@ int printf_str(va_list list)
 int printf_porc(va_list list)
 {
 	(void)list;
-	putchar('%');
+	_putchar('%');
 
-	return (0);
+	return (1);
 }

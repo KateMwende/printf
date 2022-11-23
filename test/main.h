@@ -20,5 +20,6 @@ int (*get_function(char c))(va_list a);
 int printf_char(va_list list);
 int printf_str(va_list list);
 int printf_porc(va_list list);
+int _putchar(char c);
 
 #endif

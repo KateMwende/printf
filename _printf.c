@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 		for (; format[cont] != '\0'; i++, cont++)
 		{
 			if (format[cont] != '%')
-				putchar(format[cont]);
+				_putchar(format[cont]);
 			else if (format[cont] == '%' && format[cont + 1] == '\0')
 			{
 				return (-1);
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 			{
 				z = get_function(format[cont + 1]);
 				if (z == NULL)
-					putchar(format[cont]);
+					_putchar(format[cont]);
 				else
 				{
 					i = (i + z(args)) - 1;
