@@ -2,75 +2,44 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-/*
-* state
-*0: normal
-*1: escape
-*/
-
 /**
-*vprintk - print output
-*@format: character string
-*@args: arguements
-*Return: nothing
-*/
-void vprintk(const char *format, va_list args)
-{
-	int state = 0;
-
-	while (*format)
-	{
-		if (state == 0)
-		{
-			if (*format == '%')
-			{
-				state = 1;
-			} else
-			{
-				putchar(*format);
-			}
-
-		} else if (state == 1)
-		{
-			switch (*format)
-			{
-				case 'c':
-				{
-					char ch = (va_arg(args, int));
-
-					putchar(ch);
-					break;
-				}
-				case 's':
-				{
-				const char *s = va_arg(args, char*);
-
-				while (*s)
-				{
-					putchar(*s++);
-				}
-					break;
-				}
-			}
-		}
-		format++;
-	}
-}
-/**
-*_printf - print output with different arguments
+*_printf - print output with different arguements
 *@format: character string
 *Return: integer
 */
 int _printf(const char *format, ...)
 {
 	va_list args;
+	int cont = 0, i = -1;
+	int (*z)(va_list);
 
 	va_start(args, format);
 
-	vprintk(format, args);
+	if (format != NULL)
+	{
+		i = 0;
 
+		for (; format[cont] != '\0'; i++, cont++)
+		{
+			if (format[cont] != '%')
+				putchar(format[cont]);
+			else if (format[cont] == '%' && format[cont + 1] == '\0')
+			{
+				return (-1);
+			}
+			else if (format[cont] == '%' && format[cont + 1] != '\0')
+			{
+				z = get_function(format[cont + 1]);
+				if (z == NULL)
+					putchar(format[cont]);
+				else
+				{
+					i = (i + z(args)) - 1;
+					cont++;
+				}
+			}
+		}
+	}
 	va_end(args);
-	putchar('\n');
-
-	return (0);
+	return (i);
 }
