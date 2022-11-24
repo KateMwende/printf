@@ -21,5 +21,5 @@ int printf_char(va_list list);
 int printf_str(va_list list);
 int printf_porc(va_list list);
 int _putchar(char c);
-
+int printf_reversed(va_list list);
 #endif
