@@ -1,49 +1,52 @@
 #include "main.h"
+#include <stdarg.h>
 #include <stdio.h>
 /**
- * printf_char - funtion that print char.
- * @list: arguments.
- * Return: 0.
+ * c_func - function that prints characters
+ * @args: character passed into function
+ * Return: counter
  */
-
-int printf_char(va_list list)
+int c_func(va_list args)
 {
-	int arg = va_arg(list, int);
+	char c;
 
-	_putchar(arg);
-
+	c = va_arg(args, int);
+	_putchar(c);
 	return (1);
 }
 /**
- * printf_str - funtion that print str.
- * @list: arguments.
- * Return: 0.
+ * s_func - function to print strings
+ * @args: string passed into function
+ * Return: counter
  */
-int printf_str(va_list list)
+int s_func(va_list args)
 {
 	int i;
-	char *ptr = va_arg(list, char *);
-	char *ptrNULL = "(null)";
+	char *s;
 
-	if (ptr == NULL)
-		for (i = 0; ptrNULL[i] != '\0'; i++)
-			_putchar(ptrNULL[i]);
-	else
-		for (i = 0; ptr[i] != '\0'; i++)
-			_putchar(ptr[i]);
+	s = va_arg(args, char *);
 
+	if (s == NULL)
+	{
+		s = "(null)";
+	}
+	i = 0;
+
+	while (s[i])
+	{
+		_putchar(s[i]);
+		i++;
+	}
 	return (i);
-
 }
 /**
- * printf_porc - function that prints %
- * @list: arguments.
- * Return: 0.
- */
-int printf_porc(va_list list)
+  * perc_func - function that prints %
+  * @args: character passed into function
+  * Return: number of characters
+  */
+int perc_func(va_list args)
 {
-	(void)list;
+	(void)args;
 	_putchar('%');
-
 	return (1);
 }
