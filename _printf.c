@@ -11,7 +11,11 @@ int _printf(const char *format, ...)
 	va_list args;
 	int i, j, k, count;
 	var_t type[] = {
-		{"c", c_func}, {"s", s_func}, {"%", perc_func},
+		{"c", c_func},
+		{"s", s_func},
+		{"%", perc_func},
+		{"d", printf_digit},
+		{"i", printf_digit},
 		{NULL, NULL}
 	};
 	va_start(args, format);

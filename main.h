@@ -18,4 +18,7 @@ int _putchar(char c);
 int c_func(va_list args);
 int s_func(va_list args);
 int perc_func(va_list args);
+int aux(int arg);
+int printf_digit(va_list list);
+
 #endif
