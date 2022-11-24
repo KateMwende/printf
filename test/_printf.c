@@ -9,11 +9,11 @@
 */
 int _printf(const char *format, ...)
 {
-	va_list args;
+	va_list list;
 	int cont = 0, i = -1;
 	int (*z)(va_list);
 
-	va_start(args, format);
+	va_start(list, format);
 
 	if (format != NULL)
 	{
@@ -34,12 +34,12 @@ int _printf(const char *format, ...)
 					_putchar(format[cont]);
 				else
 				{
-					i = (i + z(args)) - 1;
+					i = (i + z(list)) - 1;
 					cont++;
 				}
 			}
 		}
 	}
-	va_end(args);
+	va_end(list);
 	return (i);
 }
